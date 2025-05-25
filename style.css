@@ -1,4 +1,3 @@
-/* Base styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -35,7 +34,6 @@ main {
     padding: 30px;
 }
 
-/* Search container styles */
 .search-container {
     position: relative;
     display: flex;
@@ -86,14 +84,12 @@ main {
         transform: scale(1.1);
     }
 
-/* Book section container */
 .book-section {
     position: relative;
     margin: 20px 0;
     padding: 0 60px;
 }
 
-/* Book list carousel styles */
 .book-list {
     display: flex;
     overflow-x: auto;
@@ -101,7 +97,6 @@ main {
     gap: 20px;
     padding: 20px 0;
     -webkit-overflow-scrolling: touch;
-    /* Hide scrollbar */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -110,7 +105,6 @@ main {
         display: none;
     }
 
-/* Book card styles */
 .book-card {
     min-width: 200px;
     width: 200px;
@@ -182,7 +176,6 @@ main {
     margin-top: 5px;
 }
 
-/* Scroll arrow styles */
 .scroll-arrow {
     position: absolute;
     top: 50%;
@@ -218,7 +211,6 @@ main {
         right: 0;
     }
 
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -232,7 +224,6 @@ main {
     z-index: 100;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
     .book-card {
         min-width: 160px;
@@ -308,7 +299,6 @@ main {
         padding: 0 40px;
     }
 }
-/* Yorum kutusunu kullanýcý tarafýndan boyutlandýrýlamaz hale getirme */
 #comment-input {
     width: 100%;
     padding: 8px 10px;
@@ -317,37 +307,34 @@ main {
     margin-bottom: 8px;
     font-family: inherit;
     font-size: 13px;
-    resize: none; /* Kullanýcý tarafýndan boyutlandýrýlamaz */
+    resize: none; 
     min-height: 50px;
-    max-height: 50px; /* Sabit yükseklik */
-    height: 50px; /* Kesin yükseklik belirleme */
-    overflow-y: auto; /* Ýçerik taþarsa kaydýrma çubuðu */
+    max-height: 50px; 
+    height: 50px;
+    overflow-y: auto;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     line-height: 1.3;
-    box-sizing: border-box; /* Padding'i boyuta dahil et */
+    box-sizing: border-box; 
 }
 
-    /* Focus durumunda da boyut deðiþmemesini saðlama */
     #comment-input:focus {
         outline: none;
         border-color: darkslategrey;
         box-shadow: 0 0 0 2px rgba(47, 79, 79, 0.2);
-        height: 50px; /* Focus durumunda da sabit yükseklik */
+        height: 50px; 
         min-height: 50px;
         max-height: 50px;
     }
 
-/* Yorum kutusunun container'ýný sabit boyutta tutma */
 .comment-form {
     background-color: #f9f9f9;
     padding: 12px 15px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     margin-bottom: 15px;
-    min-height: auto; /* Minimum yükseklik otomatik */
+    min-height: auto; 
 }
 
-    /* Yorum formunun baþlýðýný küçültme */
     .comment-form h3 {
         margin-top: 0;
         margin-bottom: 10px;
@@ -355,7 +342,6 @@ main {
         font-size: 15px;
     }
 
-/* Yorum gönderme butonunu sabit boyutta tutma */
 #submit-comment-btn {
     padding: 8px 16px;
     border-radius: 20px;
@@ -363,33 +349,29 @@ main {
     width: 130px;
     height: 35px;
     margin-top: 5px;
-    flex-shrink: 0; /* Butonun küçülmesini engelle */
+    flex-shrink: 0; 
 }
 
-/* Yorum mesaj alanýný sabit boyutta tutma */
 #comment-msg {
     margin-top: 5px;
     font-size: 11px;
     height: 14px;
     margin-bottom: 5px;
-    overflow: hidden; /* Taþan içeriði gizle */
+    overflow: hidden; 
 }
 
-/* Madde iþaretlerini kaldýrma */
 #cart-items {
-    list-style-type: none; /* Madde iþaretlerini kaldýrýr */
-    padding-left: 0; /* Sol padding'i kaldýrýr */
-    margin-left: 0; /* Sol margin'i kaldýrýr */
+    list-style-type: none; 
+    padding-left: 0; 
+    margin-left: 0; 
 }
 
-    /* Kitaplar arasýnda daha fazla boþluk býrakma */
     #cart-items li {
-        margin-bottom: 20px; /* Kitaplar arasýnda 20px boþluk býrakýr */
-        padding-bottom: 20px; /* Alt kýsýmda iç boþluk ekler */
-        border-bottom: 1px solid #eee; /* Kitaplar arasýna ayýrýcý çizgi ekler */
+        margin-bottom: 20px; 
+        padding-bottom: 20px; 
+        border-bottom: 1px solid #eee; 
     }
 
-        /* Son kitabýn altýndaki çizgiyi kaldýrma (opsiyonel) */
         #cart-items li:last-child {
             border-bottom: none;
             margin-bottom: 0;
