@@ -1,41 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Check if user is logged in
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            // User is logged in, load cart items
             loadOrderSummary(user.uid)
 
-            // Pre-fill email if available
             document.getElementById("email").value = user.email || ""
 
-            // Pre-fill name if available
             if (user.displayName) {
                 document.getElementById("fullname").value = user.displayName
             }
         } else {
-            // User is not logged in, redirect to login page
             alert("Please login to proceed with checkout")
             window.location.href = "HTMLPage1.html"
         }
     })
 
-    // Payment method selection
     const paymentMethods = document.querySelectorAll(".payment-method")
     paymentMethods.forEach((method) => {
         method.addEventListener("click", function () {
-            // Remove active class from all methods
             paymentMethods.forEach((m) => m.classList.remove("active"))
 
-            // Add active class to clicked method
             this.classList.add("active")
-
-            // Hide all payment forms
             document.getElementById("credit-card-form").style.display = "none"
             document.getElementById("mastercard-form").style.display = "none"
             document.getElementById("paypal-form").style.display = "none"
             document.getElementById("bank-transfer-form").style.display = "none"
 
-            // Show selected payment form
             const methodType = this.getAttribute("data-method")
             if (methodType === "credit-card") {
                 document.getElementById("credit-card-form").style.display = "block"
@@ -49,12 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    // Complete payment button
     document.getElementById("complete-payment").addEventListener("click", () => {
         processPayment()
     })
 
-    // Format credit card number with spaces
     const cardNumberInput = document.getElementById("card-number")
     if (cardNumberInput) {
         cardNumberInput.addEventListener("input", (e) => {
@@ -72,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    // Format expiry date
     const expiryDateInput = document.getElementById("expiry-date")
     if (expiryDateInput) {
         expiryDateInput.addEventListener("input", (e) => {
@@ -86,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    // Format mastercard number with spaces
     const mastercardNumberInput = document.getElementById("mastercard-number")
     if (mastercardNumberInput) {
         mastercardNumberInput.addEventListener("input", (e) => {
@@ -104,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    // Format mastercard expiry date
     const mastercardExpiryInput = document.getElementById("mastercard-expiry")
     if (mastercardExpiryInput) {
         mastercardExpiryInput.addEventListener("input", (e) => {
@@ -123,10 +107,8 @@ function loadOrderSummary(userId) {
     const orderItemsContainer = document.getElementById("order-items")
     const orderTotalElement = document.getElementById("order-total-price")
 
-    // Clear existing items
     orderItemsContainer.innerHTML = ""
 
-    // Get cart items from Firebase
     firebase
         .database()
         .ref("carts/" + userId)
@@ -142,13 +124,11 @@ function loadOrderSummary(userId) {
 
             let total = 0
 
-            // Loop through cart items
             for (const key in cartData) {
                 const item = cartData[key]
                 const itemTotal = item.price * item.quantity
                 total += itemTotal
 
-                // Create item element
                 const itemElement = document.createElement("div")
                 itemElement.className = "order-item"
                 itemElement.innerHTML = `
@@ -163,7 +143,6 @@ function loadOrderSummary(userId) {
                 orderItemsContainer.appendChild(itemElement)
             }
 
-            // Update total
             orderTotalElement.textContent = "$" + total.toFixed(2)
         })
         .catch((error) => {
@@ -174,9 +153,8 @@ function loadOrderSummary(userId) {
 
 function processPayment() {
     try {
-        console.log("Starting payment process...") // Debug log
+        console.log("Starting payment process...") 
 
-        // Get form values
         const fullname = document.getElementById("fullname").value
         const email = document.getElementById("email").value
         const address = document.getElementById("address").value
@@ -184,13 +162,11 @@ function processPayment() {
         const postal = document.getElementById("postal").value
         const country = document.getElementById("country").value
 
-        // Validate form
         if (!fullname || !email || !address || !city || !postal || !country) {
             alert("Please fill in all shipping information fields")
             return
         }
 
-        // Get selected payment method
         const selectedMethod = document.querySelector(".payment-method.active")
         if (!selectedMethod) {
             alert("Please select a payment method")
@@ -199,7 +175,6 @@ function processPayment() {
 
         const methodType = selectedMethod.getAttribute("data-method")
 
-        // Validate payment details based on method
         if (methodType === "credit-card") {
             const cardName = document.getElementById("card-name").value
             const cardNumber = document.getElementById("card-number").value.replace(/\s+/g, "")
@@ -242,19 +217,16 @@ function processPayment() {
             }
         }
 
-        // Get current user
         const user = firebase.auth().currentUser
         if (!user) {
             alert("Please login to complete your purchase")
             return
         }
 
-        console.log("User authenticated, preparing order data...") // Debug log
+        console.log("User authenticated, preparing order data...") 
 
-        // Generate unique order ID
         const orderId = "ORDER_" + Date.now() + "_" + Math.random().toString(36).substring(2, 11)
 
-        // Create order in Firebase
         const orderData = {
             orderId: orderId,
             userId: user.uid,
@@ -274,15 +246,14 @@ function processPayment() {
             timestamp: firebase.database.ServerValue.TIMESTAMP,
         }
 
-        console.log("Getting cart items...") // Debug log
+        console.log("Getting cart items...") 
 
-        // Get cart items
         firebase
             .database()
             .ref("carts/" + user.uid)
             .once("value")
             .then((snapshot) => {
-                console.log("Cart data retrieved") // Debug log
+                console.log("Cart data retrieved") 
                 const cartData = snapshot.val()
 
                 if (!cartData) {
@@ -290,10 +261,8 @@ function processPayment() {
                     return Promise.reject(new Error("Cart is empty"))
                 }
 
-                // Add items to order
                 orderData.items = cartData
 
-                // Calculate total
                 let total = 0
                 for (const key in cartData) {
                     const item = cartData[key]
@@ -301,41 +270,35 @@ function processPayment() {
                 }
                 orderData.total = total
 
-                console.log("Saving order to Firebase...") // Debug log
-                console.log("Order data:", orderData) // Debug log
+                console.log("Saving order to Firebase...") 
+                console.log("Order data:", orderData) 
 
-                // Save order to Firebase Database
                 return firebase.database().ref("orders").push(orderData)
             })
             .then((orderRef) => {
-                console.log("Order saved successfully with ID:", orderRef.key) // Debug log
+                console.log("Order saved successfully with ID:", orderRef.key) 
 
-                // Store order info for confirmation page
                 localStorage.setItem("orderTotal", "$" + orderData.total.toFixed(2))
                 localStorage.setItem("paymentMethod", methodType)
                 localStorage.setItem("orderId", orderData.orderId)
 
-                console.log("Clearing cart...") // Debug log
+                console.log("Clearing cart...") 
 
-                // Clear cart from Firebase
                 return firebase
                     .database()
                     .ref("carts/" + user.uid)
                     .remove()
             })
             .then(() => {
-                console.log("Cart cleared successfully") // Debug log
+                console.log("Cart cleared successfully") 
 
-                // Show success message
                 alert("Payment successful! Your order has been placed.")
 
-                // Redirect to confirmation page
                 window.location.href = "order-confirmation.html"
             })
             .catch((error) => {
                 console.error("Error in payment process:", error)
 
-                // Show specific error message based on error type
                 if (error.message === "Cart is empty") {
                     alert("Your cart is empty. Please add items before checkout.")
                 } else if (error.code === "PERMISSION_DENIED") {
