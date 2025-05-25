@@ -156,16 +156,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Generate random order number
             const orderNumber = "UB-" + Math.floor(100000 + Math.random() * 900000);
             document.getElementById("order-number").textContent = orderNumber;
 
-            // Set current date
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById("order-date").textContent = today.toLocaleDateString(undefined, options);
 
-            // Get order details from URL parameters or localStorage if available
             const urlParams = new URLSearchParams(window.location.search);
             const paymentMethod = urlParams.get('method') || localStorage.getItem('paymentMethod') || "Credit Card";
             const orderTotal = urlParams.get('total') || localStorage.getItem('orderTotal') || "$0.00";
@@ -173,7 +170,6 @@
             document.getElementById("payment-method").textContent = paymentMethod;
             document.getElementById("order-total").textContent = orderTotal;
 
-            // Clear localStorage
             localStorage.removeItem('paymentMethod');
             localStorage.removeItem('orderTotal');
         });
