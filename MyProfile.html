@@ -23,7 +23,6 @@
     </header>
 
     <main>
-        <!-- Profile content - will be shown when logged in -->
         <div id="profile-content" style="display:none;">
             <h1 id="welcome-title">Welcome to Your Profile</h1>
 
@@ -45,7 +44,6 @@
             </div>
         </div>
 
-        <!-- Not logged in message - will be shown when not logged in -->
         <div id="not-logged-in-message" style="margin-top: 20px; color: black; display: none; text-align: center; padding: 30px;">
             <p style="font-size: 18px; margin-bottom: 20px;">Please login to view your profile information.</p>
             <button id="login-redirect-btn" style="background-color:darkslategrey; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 4px;">
@@ -65,17 +63,14 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Kullanıcı giriş durumunu kontrol et
             firebase.auth().onAuthStateChanged(user => {
                 const profileContent = document.getElementById("profile-content");
                 const notLoggedInMessage = document.getElementById("not-logged-in-message");
 
                 if (user) {
-                    // Kullanıcı giriş yapmış
                     if (profileContent) profileContent.style.display = "block";
                     if (notLoggedInMessage) notLoggedInMessage.style.display = "none";
 
-                    // Profil bilgilerini göster
                     document.getElementById("user-email").textContent = user.email;
                     document.getElementById("user-name").textContent = user.displayName || "Not set";
 
@@ -85,7 +80,6 @@
                     document.getElementById("user-registration-date").textContent =
                         new Date(user.metadata.creationTime).toLocaleDateString();
 
-                    // Cart count
                     const cartRef = firebase.database().ref("carts/" + user.uid);
                     cartRef.once("value").then(snapshot => {
                         let count = 0;
@@ -96,17 +90,14 @@
                         document.getElementById("cart-count").textContent = count;
                     });
                 } else {
-                    // Kullanıcı giriş yapmamış
                     if (profileContent) profileContent.style.display = "none";
                     if (notLoggedInMessage) notLoggedInMessage.style.display = "block";
                 }
             });
 
-            // Login Now butonuna tıklama olayı
             const loginRedirectBtn = document.getElementById('login-redirect-btn');
             if (loginRedirectBtn) {
                 loginRedirectBtn.addEventListener('click', function () {
-                    // Login modalını göster
                     const loginModal = document.getElementById('login-modal');
                     if (loginModal) {
                         loginModal.style.display = 'block';
@@ -114,7 +105,6 @@
                 });
             }
 
-            // Edit name button
             const editNameBtn = document.getElementById("edit-name-btn");
             const nameEditContainer = document.getElementById("name-edit-container");
 
@@ -124,7 +114,6 @@
                 });
             }
 
-            // Save name button
             const saveNameBtn = document.getElementById("save-name-btn");
             if (saveNameBtn) {
                 saveNameBtn.addEventListener("click", () => {
