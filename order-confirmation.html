@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation - UniBook</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <style>
+        .confirmation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .confirmation-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .confirmation-icon svg {
+                width: 40px;
+                height: 40px;
+                fill: white;
+            }
+
+        .confirmation-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .confirmation-message {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .order-details {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+            .order-details h3 {
+                margin-top: 0;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #eee;
+            }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary-button {
+            background-color: darkslategrey;
+            color: white;
+        }
+
+        .secondary-button {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+    </style>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div><a href="HTMLPage1.html" class="logo">UniBook</a></div>
+        <nav>
+            <a href="MyProfile.html">MY PROFILE</a>
+            <a href="#" id="logout-btn" style="display:none;">LOG OUT</a>
+            <a href="#" id="login-btn">LOGIN</a>
+            <a href="Cart.html">MY CART</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="confirmation-container">
+            <div class="confirmation-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+                </svg>
+            </div>
+
+            <h1 class="confirmation-title">Order Confirmed!</h1>
+
+            <p class="confirmation-message">
+                Thank you for your purchase. Your order has been successfully placed and is being processed.
+                You will receive an email confirmation shortly.
+            </p>
+
+            <div class="order-details">
+                <h3>Order Summary</h3>
+                <div class="detail-row">
+                    <span>Order Number:</span>
+                    <span id="order-number">UB-12345</span>
+                </div>
+                <div class="detail-row">
+                    <span>Order Date:</span>
+                    <span id="order-date">May 23, 2025</span>
+                </div>
+                <div class="detail-row">
+                    <span>Payment Method:</span>
+                    <span id="payment-method">Credit Card</span>
+                </div>
+                <div class="detail-row">
+                    <span>Total Amount:</span>
+                    <span id="order-total">$0.00</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="HTMLPage1.html" class="action-button primary-button">Continue Shopping</a>
+                <a href="MyProfile.html" class="action-button secondary-button">View Profile</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="login-modal" class="modal" style="display:none;position:fixed;top:10%;left:83%;background:#fff;padding:20px;border-radius:10px;background-color:ghostwhite;">
+        <span id="close-login" style="float:right;cursor:pointer;">&times;</span>
+        <h2>Register / Login</h2>
+        <input type="email" id="email-login" placeholder="Email"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button id="register-btn">Register</button>
+        <button id="login-btn-modal">Login</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Generate random order number
+            const orderNumber = "UB-" + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById("order-number").textContent = orderNumber;
+
+            // Set current date
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById("order-date").textContent = today.toLocaleDateString(undefined, options);
+
+            // Get order details from URL parameters or localStorage if available
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentMethod = urlParams.get('method') || localStorage.getItem('paymentMethod') || "Credit Card";
+            const orderTotal = urlParams.get('total') || localStorage.getItem('orderTotal') || "$0.00";
+
+            document.getElementById("payment-method").textContent = paymentMethod;
+            document.getElementById("order-total").textContent = orderTotal;
+
+            // Clear localStorage
+            localStorage.removeItem('paymentMethod');
+            localStorage.removeItem('orderTotal');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Detail</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div><a href="HTMLPage1.html" class="logo">UniBook</a></div>
+        <nav>
+            <a href="MyProfile.html">MY PROFILE</a>
+            <a href="#" id="logout-btn" style="display:none;">LOG OUT</a>
+            <a href="#" id="login-btn">LOGIN</a>
+            <a href="Cart.html">MY CART</a>
+        </nav>
+    </header>
+    <main>
+
+        <div id="book-detail">
+        </div>
+        <div id="login-modal" class="modal" style="display:none;position:fixed;top:10%;left:83%;background:#fff;padding:20px;border-radius:10px;background-color:ghostwhite;border: 1px solid; border-color: lightgrey ;">
+            <span id="close-login" style="float:right;cursor:pointer;">&times;</span>
+            <h2>Register / Login</h2>
+            <input type="email" id="email" placeholder="Email"><br><br>
+            <input type="password" id="password" placeholder="Password"><br><br>
+            <button id="register-btn">Register</button>
+            <button id="login-btn-modal">Login</button>
+        </div>
+    </main>
+</body>
+</html>

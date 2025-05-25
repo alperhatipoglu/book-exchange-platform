@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTMLPage1.html</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+        .book-card {
+            width: 250px;
+            height: 375px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: white;
+            transition: box-shadow 0.3s ease;
+            flex-shrink: 0;
+        }
+
+            .book-card:hover {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            .book-card img {
+                width: 100%;
+                height: 350px;
+                border-radius: 4px;
+                transition: transform 0.3s ease;
+            }
+
+                .book-card img:hover {
+                    transform: scale(1.05);
+                }
+
+        .book-title {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .book-author {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #34495e;
+            text-align: left;
+            margin: 30px 0 10px 25px;
+            padding-left: 10px;
+        }
+      
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <button id="category-btn" style="
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 10px 0 0;
+        color: #2c3e50;
+    " aria-label="Open categories menu">
+                &#9776;
+            </button>
+            <a href="HTMLPage1.html" class="logo">UniBook</a>
+        </div>
+
+        <nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search books...">
+            </div>
+            <a href="MyProfile.html">MY PROFILE</a>
+            <a href="#" id="logout-btn" style="display:none;">LOG OUT</a>
+            <a href="#" id="login-btn">LOGIN</a>
+            <a href="Cart.html">MY CART</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Find, Buy and Exchange Books Quickly!</h1>
+        <h2>Most Searched Novels</h2>
+        <div class="book-section">
+            <button class="scroll-arrow left" id="scroll-left">‹</button>
+            <button class="scroll-arrow right" id="scroll-right">›</button>
+            <section class="book-list" id="book-list"></section>
+        </div>
+    </main>
+
+    <div id="login-modal" class="modal" style="display:none;position:fixed;top:10%;left:83%;background:#fff;padding:20px;border-radius:10px;background-color:ghostwhite;border: 1px solid; border-color: lightgrey ;">
+        <span id="close-login" style="float:right;cursor:pointer;">&times;</span>
+        <h2>Register / Login</h2>
+        <input type="email" id="email" placeholder="Email"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button id="register-btn">Register</button>
+        <button id="login-btn-modal">Login</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const scrollLeft = document.getElementById('scroll-left');
+            const scrollRight = document.getElementById('scroll-right');
+            const bookList = document.getElementById('book-list');
+            function getScrollDistance() {
+                const viewportWidth = window.innerWidth;
+
+                if (viewportWidth > 1200) {
+                    return 1000; // Scroll 4 books on large screens
+                } else if (viewportWidth > 768) {
+                    return 800; // Scroll 3 books on medium screens
+                } else {
+                    return 600; // Scroll 2 books on small screens
+                }
+            }
+
+            if (scrollLeft && bookList) {
+                scrollLeft.addEventListener('click', () => {
+                    bookList.scrollBy({
+                        left: -getScrollDistance(),
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            if (scrollRight && bookList) {
+                scrollRight.addEventListener('click', () => {
+                    bookList.scrollBy({
+                        left: getScrollDistance(),
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            setupSearch();
+        });
+
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+
+            if (!searchInput) return;
+
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const mostSearchedTitle = document.querySelector('h2');
+                const mainTitle = document.querySelector('h1');
+                mostSearchedTitle.style.display = searchTerm.length > 0 ? 'none' : 'block';
+                mainTitle.style.display = searchTerm.length > 0 ? 'none' : 'block';
+
+
+                if (searchTerm.length < 2) {
+                    const bookCards = document.querySelectorAll('.book-card');
+                    bookCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    return;
+                }
+
+                const bookCards = document.querySelectorAll('.book-card');
+
+                bookCards.forEach(card => {
+                    const title = card.querySelector('.book-title')?.textContent.toLowerCase() || '';
+                    const author = card.querySelector('.book-author')?.textContent.toLowerCase() || '';
+                    const category = card.querySelector('.book-category')?.textContent.toLowerCase() || '';
+
+                    if (title.includes(searchTerm) || author.includes(searchTerm) || category.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            searchInput.addEventListener('input', performSearch);
+
+            if (searchBtn) {
+                searchBtn.addEventListener('click', performSearch);
+            }
+
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+    </script>
+    <!-- Soldan açılan kategori menüsü -->
+    <div id="category-menu" style="
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 92%;
+    background: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    padding-top: 60px;
+    z-index: 1000;
+        overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+       scrollbar-width: none;
+        -ms-overflow-style: none;
+">
+        <button id="close-category-menu" style="
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    " aria-label="Close categories menu">
+            &times;
+        </button>
+
+        <!-- ARAMA KUTUSU -->
+        <input type="text" id="category-search" placeholder="Search category..." style="
+    width: 85%;
+    margin: 0 10px 15px 10px;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1.5px solid #bbb;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+">
+
+        <a href="category.html">all books</a>  <!-- Buraya eklendi -->
+        <a href="category.html?category=science">science </a>
+        <a href="category.html?category=allegorical novella">allegorical novella</a>
+        <a href="category.html?category=high fantasy novel">high fantasy novel</a>
+        <a href="category.html?category=dystopian novel">dystopian novel</a>
+        <a href="category.html?category=coming-of-age novel">coming-of-age novel</a>
+        <a href="category.html?category=science fiction">science fiction</a>
+        <a href="category.html?category=tragedy novel">tragedy novel</a>
+        <a href="category.html?category=historical novel">historical novel</a>
+        <a href="category.html?category=children's fantasy novel">children's fantasy novel</a>
+        <a href="category.html?category=young adult fantasy">young adult fantasy</a>
+        <a href="category.html?category=philosophical fiction">philosophical fiction</a>
+        <a href="category.html?category=historical fiction">historical fiction</a>
+        <a href="category.html?category=young adult dystopian">young adult dystopian</a>
+        <a href="category.html?category=horror">horror</a>
+        <a href="category.html?category=thriller">thriller</a>
+        <a href="category.html?category=psychology">psychology</a>
+        <a href="category.html?category=history">history</a>
+        <a href="category.html?category=programming">programming</a>
+    </div>
+
+    <script>
+        const categoryBtn = document.getElementById('category-btn');
+        const categoryMenu = document.getElementById('category-menu');
+        const closeCategoryMenu = document.getElementById('close-category-menu');
+
+        categoryBtn.addEventListener('click', () => {
+            categoryMenu.style.left = '0';
+        });
+
+        closeCategoryMenu.addEventListener('click', () => {
+            categoryMenu.style.left = '-250px';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!categoryMenu.contains(e.target) && e.target !== categoryBtn) {
+                categoryMenu.style.left = '-250px';
+            }
+        });
+
+
+    </script>
+
+    <script>
+        // Kitapları Firebase'den çek ve sadece featured olanları göster
+        firebase.database().ref('books').once('value', snapshot => {
+            const books = snapshot.val();
+            const bookList = document.getElementById('book-list');
+
+            for (let key in books) {
+                const book = books[key];
+
+                // SADECE featured olanları göster
+                if (book.featured) {
+                    const card = document.createElement('div');
+                    card.className = 'book-card';
+
+
+
+                    const img = document.createElement('img');
+                    img.src = book.image;
+                    img.alt = book.title;
+                    img.onclick = () => {
+                        window.location.href = `book-detail.html?id=${key}`;
+                    };
+
+                    const title = document.createElement('div');
+                    title.className = 'book-title';
+                    title.textContent = book.title;
+
+                    const author = document.createElement('div');
+                    author.className = 'book-author';
+                    author.textContent = book.author;
+
+                    card.appendChild(img);
+                    card.appendChild(title);
+                    card.appendChild(author);
+
+                    bookList.appendChild(card);
+                }
+            }
+        });
+    </script>
+    <script>
+        const categorySearchInput = document.getElementById('category-search');
+        const categoryMenuLinks = document.querySelectorAll('#category-menu a');
+
+        categorySearchInput.addEventListener('input', () => {
+            const filter = categorySearchInput.value.toLowerCase();
+
+            categoryMenuLinks.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    link.style.display = 'block';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>

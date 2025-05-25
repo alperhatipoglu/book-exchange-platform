@@ -1,0 +1,979 @@
+{
+  "books": {
+    "abriefhistoryoftime": {
+      "author": "Stephen Hawking",
+      "category": "science book",
+      "description": "<i>A Brief History of Time</i> is a concise summary of the origins of our universe. This book is written as a clear guide to the universe. Stephen Hawking explains some of the mysteries of our universe, from black holes to time travel.",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/81Hj1Ic5+3L.jpg",
+      "pages": 256,
+      "price": 4.75,
+      "publicationDate": "1988",
+      "rating": 5,
+      "title": "A Brief History of Time"
+    },
+    "book1": {
+      "author": "George Orwell",
+      "category": "allegorical novella",
+      "description": "Animal Farm is a novel written by English author and journalist George Orwell. It is a cautionary message about the rise of totalitarian regimes and how people can be manipulated.",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/71JUJ6pGoIL.jpg",
+      "pages": 92,
+      "price": 2,
+      "publicationDate": "17 August 1945",
+      "rating": 4,
+      "title": "Animal Farm"
+    },
+    "book4": {
+      "author": "J. R. R. Tolkien",
+      "category": "high fantasy novel",
+      "description": "J.R.R. Tolkien's The Lord of the Rings trilogy is considered one of the most important works of modern fantasy literature. It takes place in a fictional universe called Middle Earth. It is about an adventure in which the Ring of Power must be destroyed and the struggle in this process.",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+      "pages": 1137,
+      "price": 3.9,
+      "publicationDate": "29 July 1954",
+      "rating": 5,
+      "title": "The Lord Of The Rings"
+    },
+    "bravenewworld": {
+      "author": "Aldous Huxley",
+      "category": "dystopian novel",
+      "description": "",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/91D4YvdC0dL.jpg",
+      "pages": 311,
+      "price": 2.75,
+      "publicationDate": "1932",
+      "rating": 4,
+      "title": "Brave New World"
+    },
+    "catcherintherye": {
+      "author": "J.D. Salinger",
+      "category": "coming-of-age novel",
+      "description": "",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/91fQEUwFMyL._AC_UF1000,1000_QL80_.jpg",
+      "pages": 277,
+      "price": 2.25,
+      "publicationDate": "16 July 1951",
+      "rating": 4,
+      "title": "The Catcher in the Rye"
+    },
+    "clean_architecture": {
+      "author": "Robert C. Martin",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/41-sN-mzwKL.jpg",
+      "pages": 432,
+      "price": 28,
+      "publicationDate": "2017",
+      "rating": 4.6,
+      "title": "Clean Architecture"
+    },
+    "clean_code": {
+      "author": "Robert C. Martin",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/41xShlnTZTL.jpg",
+      "pages": 464,
+      "price": 32.5,
+      "publicationDate": "1 August 2008",
+      "rating": 4.7,
+      "title": "Clean Code"
+    },
+    "code_complete": {
+      "author": "Steve McConnell",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/51t0RWVCxSL.jpg",
+      "pages": 960,
+      "price": 45,
+      "publicationDate": "2004",
+      "rating": 4.7,
+      "title": "Code Complete"
+    },
+    "design_patterns": {
+      "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81gtKoapHFL.jpg",
+      "pages": 395,
+      "price": 40,
+      "publicationDate": "1994",
+      "rating": 4.7,
+      "title": "Design Patterns: Elements of Reusable Object-Oriented Software"
+    },
+    "effective_java": {
+      "author": "Joshua Bloch",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/41DNuR3Vz-L.jpg",
+      "pages": 416,
+      "price": 42,
+      "publicationDate": "2018",
+      "rating": 4.7,
+      "title": "Effective Java"
+    },
+    "fahrenheit451": {
+      "author": "Ray Bradbury",
+      "category": "science fiction",
+      "description": "Fahrenheit 451 is a science fiction novel written by Ray Bradbury. The work takes place in a future where books are banned and freedom of thought is restricted.",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/61GaWVM6ZlL._AC_UF1000,1000_QL80_DpWeblab_.jpg",
+      "pages": 156,
+      "price": 1.05,
+      "publicationDate": "19 October 1953",
+      "rating": 4,
+      "title": "Fahrenheit 451"
+    },
+    "frankenstein": {
+      "author": "Mary Shelley",
+      "category": "gothic fiction",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81Q5rYd8b2L.jpg",
+      "pages": 280,
+      "price": 3.5,
+      "publicationDate": "1 January 1818",
+      "rating": 4,
+      "title": "Frankenstein"
+    },
+    "gone_with_the_wind": {
+      "author": "Margaret Mitchell",
+      "category": "historical fiction",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81e4dqtw8xL.jpg",
+      "pages": 1037,
+      "price": 6.5,
+      "publicationDate": "30 June 1936",
+      "rating": 4.5,
+      "title": "Gone with the Wind"
+    },
+    "greatgatsby": {
+      "author": "F. Scott Fitzgerald",
+      "category": "tragedy novel",
+      "description": "",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/81K1jbUMmFL._AC_UF1000,1000_QL80_.jpg",
+      "pages": 180,
+      "price": 1.99,
+      "publicationDate": "10 April 1925",
+      "rating": 4,
+      "title": "The Great Gatsby"
+    },
+    "harry_potter_chamber_of_secrets": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/91HHqVTAJQL.jpg",
+      "pages": 341,
+      "price": 5.5,
+      "publicationDate": "2 July 1998",
+      "rating": 4.8,
+      "title": "Harry Potter and the Chamber of Secrets"
+    },
+    "harry_potter_deathly_hallows": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/91ezrjpjGCL.jpg",
+      "pages": 759,
+      "price": 6.75,
+      "publicationDate": "21 July 2007",
+      "rating": 4.9,
+      "title": "Harry Potter and the Deathly Hallows"
+    },
+    "harry_potter_goblet_of_fire": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/91b0C2YNSrL.jpg",
+      "pages": 636,
+      "price": 6,
+      "publicationDate": "8 July 2000",
+      "rating": 4.9,
+      "title": "Harry Potter and the Goblet of Fire"
+    },
+    "harry_potter_half_blood_prince": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81t2CVWEsUL.jpg",
+      "pages": 607,
+      "price": 6.5,
+      "publicationDate": "16 July 2005",
+      "rating": 4.8,
+      "title": "Harry Potter and the Half-Blood Prince"
+    },
+    "harry_potter_order_of_phoenix": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81WcnNQ-TBL.jpg",
+      "pages": 766,
+      "price": 6.25,
+      "publicationDate": "21 June 2003",
+      "rating": 4.8,
+      "title": "Harry Potter and the Order of the Phoenix"
+    },
+    "harry_potter_prisoner_of_azkaban": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81lAPl9Fl0L.jpg",
+      "pages": 435,
+      "price": 5.75,
+      "publicationDate": "8 July 1999",
+      "rating": 4.9,
+      "title": "Harry Potter and the Prisoner of Azkaban"
+    },
+    "harry_potter_sorcerers_stone": {
+      "author": "J.K. Rowling",
+      "category": "young adult fantasy",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81YOuOGFCJL.jpg",
+      "pages": 309,
+      "price": 5.25,
+      "publicationDate": "26 June 1997",
+      "rating": 4.9,
+      "title": "Harry Potter and the Sorcerer's Stone"
+    },
+    "head_first_design_patterns": {
+      "author": "Eric Freeman, Elisabeth Robson",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81wgcld4wxL.jpg",
+      "pages": 694,
+      "price": 35,
+      "publicationDate": "2004",
+      "rating": 4.5,
+      "title": "Head First Design Patterns"
+    },
+    "introduction_to_algorithms": {
+      "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/41as+WafrFL.jpg",
+      "pages": 1312,
+      "price": 80,
+      "publicationDate": "2009",
+      "rating": 4.6,
+      "title": "Introduction to Algorithms"
+    },
+    "lesmiserables": {
+      "author": "Victor Hugo",
+      "category": "historical novel",
+      "description": "Victor Hugo's masterpiece, Les Miserables, explores in depth the lives of every person, from the lowest classes to the highest ranks of society, after the French Revolution. It explores themes of justice, love, sacrifice and humanity.",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/81e1NPAQJmL.jpg",
+      "pages": 1462,
+      "price": 4.5,
+      "publicationDate": "31 March 1862",
+      "rating": 5,
+      "title": "Les Miserables"
+    },
+    "refactoring": {
+      "author": "Martin Fowler",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/51kzA4K4T6L.jpg",
+      "pages": 448,
+      "price": 38,
+      "publicationDate": "1999",
+      "rating": 4.6,
+      "title": "Refactoring: Improving the Design of Existing Code"
+    },
+    "sapiens": {
+      "author": "Yuval Noah Harari",
+      "category": "history",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg",
+      "pages": 443,
+      "price": 7.5,
+      "publicationDate": "2011",
+      "rating": 4.7,
+      "title": "Sapiens: A Brief History of Humankind"
+    },
+    "sciencebook1": {
+      "author": "Carl Sagan",
+      "category": "science book",
+      "description": "",
+      "featured": false,
+      "image": "https://m.media-amazon.com/images/I/710C5x4MzwL.jpg",
+      "pages": 350,
+      "price": 12.99,
+      "publicationDate": "1980-09-28",
+      "rating": 5,
+      "title": "Cosmos"
+    },
+    "sciencebook10": {
+      "author": "Sean Carroll",
+      "category": "science book",
+      "description": "",
+      "featured": false,
+      "image": "https://m.media-amazon.com/images/I/719zvVfpMrL._AC_UF894,1000_QL80_.jpg",
+      "pages": 368,
+      "price": 3.99,
+      "publicationDate": "2012-08-01",
+      "rating": 4,
+      "title": "The Particle at the End of the Universe"
+    },
+    "sciencebook11": {
+      "author": "Brian Greene",
+      "category": "science book",
+      "description": "",
+      "featured": false,
+      "image": "https://m.media-amazon.com/images/I/61gfUK3CZVL._AC_UF1000,1000_QL80_.jpg",
+      "pages": 448,
+      "price": 4.25,
+      "publicationDate": "1999-10-11",
+      "rating": 4,
+      "title": "The Elegant Universe"
+    },
+    "sciencebook15": {
+      "author": "James Gleick",
+      "category": "science book",
+      "description": "",
+      "featured": false,
+      "image": "https://m.media-amazon.com/images/I/91RCspPB-PL.jpg",
+      "pages": 400,
+      "price": 3.5,
+      "publicationDate": "1987-01-01",
+      "rating": 4,
+      "title": "Chaos: Making a New Science"
+    },
+    "sciencebook7": {
+      "author": "Bill Bryson",
+      "category": "science book",
+      "description": "",
+      "featured": false,
+      "image": "https://m.media-amazon.com/images/I/81IFXnlXNKL.jpg",
+      "pages": 560,
+      "price": 4.75,
+      "publicationDate": "2003-05-06",
+      "rating": 5,
+      "title": "A Short History of Nearly Everything"
+    },
+    "the_alchemist": {
+      "author": "Paulo Coelho",
+      "category": "philosophical fiction",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg",
+      "pages": 197,
+      "price": 4.75,
+      "publicationDate": "1988",
+      "rating": 4.3,
+      "title": "The Alchemist"
+    },
+    "the_da_vinci_code": {
+      "author": "Dan Brown",
+      "category": "thriller",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81QZcJwL99L.jpg",
+      "pages": 489,
+      "price": 6,
+      "publicationDate": "18 March 2003",
+      "rating": 4.1,
+      "title": "The Da Vinci Code"
+    },
+    "the_handmaids_tale": {
+      "author": "Margaret Atwood",
+      "category": "dystopian fiction",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81+m+ZdAzxL.jpg",
+      "pages": 311,
+      "price": 4.25,
+      "publicationDate": "1985",
+      "rating": 4.2,
+      "title": "The Handmaid's Tale"
+    },
+    "the_hunger_games": {
+      "author": "Suzanne Collins",
+      "category": "young adult dystopian",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/91AqZcxqXGL.jpg",
+      "pages": 374,
+      "price": 4.95,
+      "publicationDate": "14 September 2008",
+      "rating": 4.6,
+      "title": "The Hunger Games"
+    },
+    "the_pragmatic_programmer": {
+      "author": "Andrew Hunt, David Thomas",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/518FqJvR9aL.jpg",
+      "pages": 352,
+      "price": 30,
+      "publicationDate": "1999",
+      "rating": 4.8,
+      "title": "The Pragmatic Programmer"
+    },
+    "the_shining": {
+      "author": "Stephen King",
+      "category": "horror",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/81yPcuRlG7L.jpg",
+      "pages": 447,
+      "price": 5.2,
+      "publicationDate": "28 January 1977",
+      "rating": 4.5,
+      "title": "The Shining"
+    },
+    "thehobbit": {
+      "author": "J.R.R. Tolkien",
+      "category": "children's fantasy novel",
+      "description": "",
+      "featured": true,
+      "image": "https://m.media-amazon.com/images/I/81uEDUfKBZL._AC_UF1000,1000_QL80_.jpg",
+      "pages": 310,
+      "price": 3.25,
+      "publicationDate": "21 September 1937",
+      "rating": 5,
+      "title": "The Hobbit"
+    },
+    "thinking_fast_and_slow": {
+      "author": "Daniel Kahneman",
+      "category": "psychology",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/71Z2fgJmJmL.jpg",
+      "pages": 499,
+      "price": 8,
+      "publicationDate": "25 October 2011",
+      "rating": 4.6,
+      "title": "Thinking, Fast and Slow"
+    },
+    "thinking_in_java": {
+      "author": "Bruce Eckel",
+      "category": "programming",
+      "description": "",
+      "image": "https://m.media-amazon.com/images/I/71Y9TqF7hXL.jpg",
+      "pages": 1150,
+      "price": 15,
+      "publicationDate": "1998",
+      "rating": 4.2,
+      "title": "Thinking in Java"
+    },
+    
+      "spacebook1": {
+        "author": "Andy Weir",
+        "category": "science fiction",
+        "description": "",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/c3/The_Martian_2014_Film_Poster.jpg",
+        "featured": false,
+        "pages": 384,
+        "price": 5.00,
+        "publicationDate": "2014-02-11",
+        "rating": 5,
+        "title": "The Martian"
+      },
+      "spacebook2": {
+        "author": "Carl Sagan",
+        "category": "science book",
+        "description": "",
+        "image": "https://upload.wikimedia.org/wikipedia/en/6/6d/Pale_Blue_Dot_by_Carl_Sagan_cover.jpg",
+        "featured": false,
+        "pages": 400,
+        "price": 4.50,
+        "publicationDate": "1994-01-01",
+        "rating": 5,
+        "title": "Pale Blue Dot"
+      },
+      "spacebook3": {
+        "author": "Stephen Hawking",
+        "category": "science book",
+        "description": "",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/a3/BriefHistoryTime.jpg",
+        "featured": false,
+        "pages": 256,
+        "price": 3.75,
+        "publicationDate": "1988-04-01",
+        "rating": 4,
+        "title": "A Brief History of Time"
+      },
+      "spacebook4": {
+        "author": "Isaac Asimov",
+        "category": "science fiction",
+        "description": "",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7b/I_Robot_%281951_novel%29.jpg",
+        "featured": false,
+        "pages": 255,
+        "price": 4.00,
+        "publicationDate": "1950-06-01",
+        "rating": 4,
+        "title": "I, Robot"
+      },
+      "spacebook5": {
+        "author": "Arthur C. Clarke",
+        "category": "science fiction",
+        "description": "",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/99/2001ASpaceOdysseyNovel.jpg",
+        "featured": false,
+        "pages": 224,
+        "price": 4.25,
+        "publicationDate": "1968-06-01",
+        "rating": 5,
+        "title": "2001: A Space Odyssey"
+      }
+   
+
+
+  },
+  "carts": {
+    "BCkHm08hK3S8mcvopkJjuh0P5ff2": {
+      "-OQzBRQDitDxuEHfNl6-": {
+        "bookId": "book4",
+        "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+        "name": "The Lord Of The Rings",
+        "price": 3.9,
+        "quantity": 1
+      },
+      "-OQzBT5IXCsWy7Mafy9N": {
+        "bookId": "bravenewworld",
+        "image": "https://m.media-amazon.com/images/I/91D4YvdC0dL.jpg",
+        "name": "Brave New World",
+        "price": 2.75,
+        "quantity": 1
+      }
+    },
+    "GspBvlb880Ut6yIkghoorlcq68r2": {
+      "-OR1j3u3I3Ejms1cXC8u": {
+        "bookId": "book1",
+        "image": "https://m.media-amazon.com/images/I/71JUJ6pGoIL.jpg",
+        "name": "Animal Farm",
+        "price": 2,
+        "quantity": 1
+      },
+      "-OR1j5pqWuUYuCPJ1mSa": {
+        "bookId": "book4",
+        "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+        "name": "The Lord Of The Rings",
+        "price": 3.9,
+        "quantity": 1
+      }
+    },
+    "Hfp8kd25HwXYY4wCfWBuDFC68zP2": {
+      "-OQz62bQ_fRJlPts_Lmz": {
+        "bookId": "bravenewworld",
+        "image": "https://m.media-amazon.com/images/I/91D4YvdC0dL.jpg",
+        "name": "Brave New World",
+        "price": 2.75,
+        "quantity": 1
+      }
+    },
+    "SemKY6SkYxTYYi419YHbdbHhJGG2": {
+      "-OR0bBGsxzlcZmf15coD": {
+        "bookId": "book4",
+        "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+        "name": "The Lord Of The Rings",
+        "price": 3.9,
+        "quantity": 1
+      }
+    }
+  },
+  "comments": {
+    "book1": {
+      "-OR1j9P4kQX0aRUiZNma": {
+        "text": "Kitabın fiyatı çok uygun!",
+        "timestamp": 1748097608533,
+        "userId": "GspBvlb880Ut6yIkghoorlcq68r2",
+        "userName": "kdrcncoskun75"
+      }
+    },
+    "book4": {
+      "-OQxT73YmEpiWLq564cS": {
+        "text": "asassg",
+        "timestamp": 1748009255005,
+        "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2",
+        "userName": "Jason"
+      },
+      "-OQz5BLaCaOo41ghowMn": {
+        "text": "selam kitabınızı çok beğendim",
+        "timestamp": 1748036536070,
+        "userId": "GspBvlb880Ut6yIkghoorlcq68r2",
+        "userName": "kdrcncoskun75"
+      }
+    }
+  },
+  "exchangeRequests": {
+    "GspBvlb880Ut6yIkghoorlcq68r2": {
+      "book1": {
+        "bookId": "book1",
+        "bookTitle": "Animal Farm",
+        "email": "kdrcncoskun75@gmail.com",
+        "timestamp": "2025-05-24T13:53:33.900Z",
+        "userId": "GspBvlb880Ut6yIkghoorlcq68r2"
+      }
+    },
+    "Hfp8kd25HwXYY4wCfWBuDFC68zP2": {
+      "abriefhistoryoftime": {
+        "bookId": "abriefhistoryoftime",
+        "bookTitle": "A Brief History of Time",
+        "email": "erginatamandomaltan@hotmail.com",
+        "timestamp": "2025-05-24T12:08:29.977Z",
+        "userId": "Hfp8kd25HwXYY4wCfWBuDFC68zP2"
+      }
+    },
+    "l5cOqcge0FTxh5dKp0TDRJ1chBb2": {
+      "abriefhistoryoftime": {
+        "bookId": "abriefhistoryoftime",
+        "bookTitle": "A Brief History of Time",
+        "email": "jason@email.com",
+        "timestamp": "2025-05-24T13:54:45.531Z",
+        "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+      },
+      "book4": {
+        "bookId": "book4",
+        "bookTitle": "The Lord Of The Rings",
+        "email": "jason@email.com",
+        "timestamp": "2025-05-23T14:02:31.629Z",
+        "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+      },
+      "bravenewworld": {
+        "bookId": "bravenewworld",
+        "bookTitle": "Brave New World",
+        "email": "jason@email.com",
+        "timestamp": "2025-05-24T13:17:58.362Z",
+        "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+      },
+      "lesmiserables": {
+        "bookId": "lesmiserables",
+        "bookTitle": "Les Miserables",
+        "email": "jason@email.com",
+        "timestamp": "2025-05-23T15:54:17.123Z",
+        "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+      }
+    }
+  },
+  "orders": {
+    "-OQxraTni40Ta_i4NMSE": {
+      "items": {
+        "-OQxqojXaVySixtjMlWk": {
+          "bookId": "lesmiserables",
+          "image": "https://m.media-amazon.com/images/I/81e1NPAQJmL.jpg",
+          "name": "Les Miserables",
+          "price": 4.5,
+          "quantity": 2
+        },
+        "-OQxqty75vGTPGXnrSpW": {
+          "bookId": "book4",
+          "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+          "name": "The Lord Of The Rings",
+          "price": 3.9,
+          "quantity": 1
+        },
+        "-OQxqwD4XDmXXVjs2-tf": {
+          "bookId": "abriefhistoryoftime",
+          "image": "https://m.media-amazon.com/images/I/81Hj1Ic5+3L.jpg",
+          "name": "A Brief History of Time",
+          "price": 4.75,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-23T15:58:52.815Z",
+      "orderDateFormatted": "23.05.2025",
+      "orderId": "ORDER_1748015932814_x4e3t4uer",
+      "paymentMethod": "mastercard",
+      "shippingInfo": {
+        "address": "afsaasf",
+        "city": "asdasfasf",
+        "country": "CY",
+        "email": "jason@email.com",
+        "fullname": "Jason",
+        "postal": "123124 "
+      },
+      "status": "paid",
+      "timestamp": 1748015933530,
+      "total": 17.65,
+      "userEmail": "jason@email.com",
+      "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+    },
+    "-OQzsrU5azXOKuAarXNv": {
+      "items": {
+        "-OQzsOdCGuyF6ynT_uQU": {
+          "bookId": "book4",
+          "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+          "name": "The Lord Of The Rings",
+          "price": 3.9,
+          "quantity": 2
+        },
+        "-OQzsR6hTOMfn_3x1ei5": {
+          "bookId": "abriefhistoryoftime",
+          "image": "https://m.media-amazon.com/images/I/81Hj1Ic5+3L.jpg",
+          "name": "A Brief History of Time",
+          "price": 4.75,
+          "quantity": 1
+        },
+        "-OQzsUD-ru2jM8e9RsT3": {
+          "bookId": "catcherintherye",
+          "image": "https://m.media-amazon.com/images/I/91fQEUwFMyL._AC_UF1000,1000_QL80_.jpg",
+          "name": "The Catcher in the Rye",
+          "price": 2.25,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T01:23:39.442Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748049819442_g5fzld2kr",
+      "paymentMethod": "credit-card",
+      "shippingInfo": {
+        "address": "afsaasf",
+        "city": "asdasfasf",
+        "country": "CY",
+        "email": "jason@email.com",
+        "fullname": "Jason",
+        "postal": "123124 "
+      },
+      "status": "paid",
+      "timestamp": 1748049819758,
+      "total": 14.8,
+      "userEmail": "jason@email.com",
+      "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+    },
+    "-OR0XPjbdiecVBjrDVLk": {
+      "items": {
+        "-OR0VGSELXQW9NR9FsjX": {
+          "bookId": "book4",
+          "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+          "name": "The Lord Of The Rings",
+          "price": 3.9,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T09:05:18.620Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748077518620_tk2gkqjs0",
+      "paymentMethod": "credit-card",
+      "shippingInfo": {
+        "address": "Jacksonville",
+        "city": "Jacksonville",
+        "country": "US",
+        "email": "fenderatakan@gmail.com",
+        "fullname": "Atakan Hatipoğlu",
+        "postal": "12345"
+      },
+      "status": "paid",
+      "timestamp": 1748077489315,
+      "total": 3.9,
+      "userEmail": "fenderatakan@gmail.com",
+      "userId": "SemKY6SkYxTYYi419YHbdbHhJGG2"
+    },
+    "-OR0XiXTPij5dmce3Pny": {
+      "items": {
+        "-OR0VYLR7RD2ckLVpp0G": {
+          "bookId": "book4",
+          "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+          "name": "The Lord Of The Rings",
+          "price": 3.9,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T09:06:09.471Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748077569470_1x0k9h87q",
+      "paymentMethod": "mastercard",
+      "shippingInfo": {
+        "address": "afsaasf",
+        "city": "asdasfasf",
+        "country": "TR",
+        "email": "jason@email.com",
+        "fullname": "Jason",
+        "postal": "123124 "
+      },
+      "status": "paid",
+      "timestamp": 1748077570381,
+      "total": 3.9,
+      "userEmail": "jason@email.com",
+      "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+    },
+    "-OR0Xy9e4YLWrwPWNUTE": {
+      "items": {
+        "-OR0Xoi9-9vyIWJmrguY": {
+          "bookId": "book4",
+          "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+          "name": "The Lord Of The Rings",
+          "price": 3.9,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T09:07:13.474Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748077633474_7pww4pwzx",
+      "paymentMethod": "paypal",
+      "shippingInfo": {
+        "address": "afsaasf",
+        "city": "asdasfasf",
+        "country": "UK",
+        "email": "jason@email.com",
+        "fullname": "Jason",
+        "postal": "123124 "
+      },
+      "status": "paid",
+      "timestamp": 1748077634387,
+      "total": 3.9,
+      "userEmail": "jason@email.com",
+      "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+    },
+    "-OR0ZEq1HuV2mWQJPLG6": {
+      "items": {
+        "-OR0YqhWDDBYl8ynZwZo": {
+          "bookId": "abriefhistoryoftime",
+          "image": "https://m.media-amazon.com/images/I/81Hj1Ic5+3L.jpg",
+          "name": "A Brief History of Time",
+          "price": 4.75,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T09:13:18.246Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748077998246_v0ipaz5q3",
+      "paymentMethod": "credit-card",
+      "shippingInfo": {
+        "address": "Jacksonville",
+        "city": "Jacksonville",
+        "country": "US",
+        "email": "fenderatakan@gmail.com",
+        "fullname": "Atakan Hatipoğlu",
+        "postal": "12345"
+      },
+      "status": "paid",
+      "timestamp": 1748077968953,
+      "total": 4.75,
+      "userEmail": "fenderatakan@gmail.com",
+      "userId": "SemKY6SkYxTYYi419YHbdbHhJGG2"
+    },
+    "-OR0aeOGrhF9yuBaLZJD": {
+      "items": {
+        "-OR0_GcJanBlVIjjDTo9": {
+          "bookId": "abriefhistoryoftime",
+          "image": "https://m.media-amazon.com/images/I/81Hj1Ic5+3L.jpg",
+          "name": "A Brief History of Time",
+          "price": 4.75,
+          "quantity": 1
+        },
+        "-OR0aCaRwGzW5KbuQ_8q": {
+          "bookId": "catcherintherye",
+          "image": "https://m.media-amazon.com/images/I/91fQEUwFMyL._AC_UF1000,1000_QL80_.jpg",
+          "name": "The Catcher in the Rye",
+          "price": 2.25,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T09:23:51.289Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748078631289_341nd8pac",
+      "paymentMethod": "credit-card",
+      "shippingInfo": {
+        "address": "Jacksonville",
+        "city": "Jacksonville",
+        "country": "US",
+        "email": "fenderatakan@gmail.com",
+        "fullname": "AforH",
+        "postal": "12345"
+      },
+      "status": "paid",
+      "timestamp": 1748078601984,
+      "total": 7,
+      "userEmail": "fenderatakan@gmail.com",
+      "userId": "SemKY6SkYxTYYi419YHbdbHhJGG2"
+    },
+    "-OR0axv_jAAQd27Jp5K9": {
+      "items": {
+        "-OR0agvDZ8vQBXIyG0Jl": {
+          "bookId": "abriefhistoryoftime",
+          "image": "https://m.media-amazon.com/images/I/81Hj1Ic5+3L.jpg",
+          "name": "A Brief History of Time",
+          "price": 4.75,
+          "quantity": 1
+        },
+        "-OR0aihiDyyUH0T2-m-Y": {
+          "bookId": "catcherintherye",
+          "image": "https://m.media-amazon.com/images/I/91fQEUwFMyL._AC_UF1000,1000_QL80_.jpg",
+          "name": "The Catcher in the Rye",
+          "price": 2.25,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T09:24:41.060Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748078681060_duzlf2kn2",
+      "paymentMethod": "credit-card",
+      "shippingInfo": {
+        "address": "Jacksonville",
+        "city": "Jacksonville",
+        "country": "US",
+        "email": "fenderatakan@gmail.com",
+        "fullname": "AforH",
+        "postal": "12345"
+      },
+      "status": "paid",
+      "timestamp": 1748078681999,
+      "total": 7,
+      "userEmail": "fenderatakan@gmail.com",
+      "userId": "SemKY6SkYxTYYi419YHbdbHhJGG2"
+    },
+    "-OR1Uo4SN6wafK5WJuyg": {
+      "items": {
+        "-OR0ZPMdAYH8BY1x8QQk": {
+          "bookId": "bravenewworld",
+          "image": "https://m.media-amazon.com/images/I/91D4YvdC0dL.jpg",
+          "name": "Brave New World",
+          "price": 2.75,
+          "quantity": 5
+        }
+      },
+      "orderDate": "2025-05-24T13:33:02.815Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748093582815_z7tgk2krm",
+      "paymentMethod": "mastercard",
+      "shippingInfo": {
+        "address": "Jacksonville",
+        "city": "Jacksonville",
+        "country": "US",
+        "email": "jason@email.com",
+        "fullname": "Jason",
+        "postal": "12345"
+      },
+      "status": "paid",
+      "timestamp": 1748093583879,
+      "total": 13.75,
+      "userEmail": "jason@email.com",
+      "userId": "l5cOqcge0FTxh5dKp0TDRJ1chBb2"
+    },
+    "-OR1_3g_dvkIidiA_TSh": {
+      "items": {
+        "-OQz57kIllJTAKMfsCre": {
+          "bookId": "book4",
+          "image": "https://m.media-amazon.com/images/I/81j4C6j3dRL.jpg",
+          "name": "The Lord Of The Rings",
+          "price": 3.9,
+          "quantity": 1
+        },
+        "-OQz5Zhk4yhdv3IizBXB": {
+          "bookId": "book1",
+          "image": "https://m.media-amazon.com/images/I/71JUJ6pGoIL.jpg",
+          "name": "Animal Farm",
+          "price": 2,
+          "quantity": 1
+        }
+      },
+      "orderDate": "2025-05-24T13:56:03.495Z",
+      "orderDateFormatted": "24.05.2025",
+      "orderId": "ORDER_1748094963495_4luz6764q",
+      "paymentMethod": "credit-card",
+      "shippingInfo": {
+        "address": "istanbul başakşehir ",
+        "city": "istanbul",
+        "country": "TR",
+        "email": "kdrcncoskun75@gmail.com",
+        "fullname": "kadir can gomez",
+        "postal": "070734"
+      },
+      "status": "paid",
+      "timestamp": 1748094962663,
+      "total": 5.9,
+      "userEmail": "kdrcncoskun75@gmail.com",
+      "userId": "GspBvlb880Ut6yIkghoorlcq68r2"
+    }
+  }
+}

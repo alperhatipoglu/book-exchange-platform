@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyProfile.html</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <header>
+        <div><a href="HTMLPage1.html" class="logo">UniBook</a></div>
+        <nav>
+            <a href="MyProfile.html">MY PROFILE</a>
+            <a href="#" id="logout-btn" style="display:none;">LOG OUT</a>
+            <a href="#" id="login-btn">LOGIN</a>
+            <a href="Cart.html">MY CART</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Profile content - will be shown when logged in -->
+        <div id="profile-content" style="display:none;">
+            <h1 id="welcome-title">Welcome to Your Profile</h1>
+
+            <div id="profile-info" style="margin-top:20px;">
+                <p><strong>Email:</strong> <span id="user-email"></span></p>
+                <p>
+                    <strong>Name:</strong>
+                    <span id="user-name">Loading...</span>
+                    <button id="edit-name-btn" style="margin-left: 10px;">Edit</button>
+                </p>
+
+                <div id="name-edit-container" style="margin-top:10px; display:none;">
+                    <input type="text" id="name-input" placeholder="Enter your name" style="padding:5px;">
+                    <button id="save-name-btn" style="padding:5px 10px;">Save</button>
+                </div>
+
+                <p><strong>Registration Date:</strong> <span id="user-registration-date"></span></p>
+                <p><strong>Items in Cart:</strong> <span id="cart-count">0</span></p>
+            </div>
+        </div>
+
+        <!-- Not logged in message - will be shown when not logged in -->
+        <div id="not-logged-in-message" style="margin-top: 20px; color: black; display: none; text-align: center; padding: 30px;">
+            <p style="font-size: 18px; margin-bottom: 20px;">Please login to view your profile information.</p>
+            <button id="login-redirect-btn" style="background-color:darkslategrey; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 4px;">
+                Login Now
+            </button>
+        </div>
+    </main>
+
+    <div id="login-modal" class="modal" style="display:none;position:fixed;top:10%;left:83%;background:#fff;padding:20px;border-radius:10px;background-color:ghostwhite;border: 1px solid; border-color: lightgrey ;">
+        <span id="close-login" style="float:right;cursor:pointer;">&times;</span>
+        <h2>Register / Login</h2>
+        <input type="email" id="email" placeholder="Email"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button id="register-btn">Register</button>
+        <button id="login-btn-modal">Login</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Kullanıcı giriş durumunu kontrol et
+            firebase.auth().onAuthStateChanged(user => {
+                const profileContent = document.getElementById("profile-content");
+                const notLoggedInMessage = document.getElementById("not-logged-in-message");
+
+                if (user) {
+                    // Kullanıcı giriş yapmış
+                    if (profileContent) profileContent.style.display = "block";
+                    if (notLoggedInMessage) notLoggedInMessage.style.display = "none";
+
+                    // Profil bilgilerini göster
+                    document.getElementById("user-email").textContent = user.email;
+                    document.getElementById("user-name").textContent = user.displayName || "Not set";
+
+                    const nameInput = document.getElementById("name-input");
+                    if (nameInput) nameInput.value = user.displayName || "";
+
+                    document.getElementById("user-registration-date").textContent =
+                        new Date(user.metadata.creationTime).toLocaleDateString();
+
+                    // Cart count
+                    const cartRef = firebase.database().ref("carts/" + user.uid);
+                    cartRef.once("value").then(snapshot => {
+                        let count = 0;
+                        snapshot.forEach(child => {
+                            const item = child.val();
+                            count += item.quantity || 1;
+                        });
+                        document.getElementById("cart-count").textContent = count;
+                    });
+                } else {
+                    // Kullanıcı giriş yapmamış
+                    if (profileContent) profileContent.style.display = "none";
+                    if (notLoggedInMessage) notLoggedInMessage.style.display = "block";
+                }
+            });
+
+            // Login Now butonuna tıklama olayı
+            const loginRedirectBtn = document.getElementById('login-redirect-btn');
+            if (loginRedirectBtn) {
+                loginRedirectBtn.addEventListener('click', function () {
+                    // Login modalını göster
+                    const loginModal = document.getElementById('login-modal');
+                    if (loginModal) {
+                        loginModal.style.display = 'block';
+                    }
+                });
+            }
+
+            // Edit name button
+            const editNameBtn = document.getElementById("edit-name-btn");
+            const nameEditContainer = document.getElementById("name-edit-container");
+
+            if (editNameBtn && nameEditContainer) {
+                editNameBtn.addEventListener("click", () => {
+                    nameEditContainer.style.display = "block";
+                });
+            }
+
+            // Save name button
+            const saveNameBtn = document.getElementById("save-name-btn");
+            if (saveNameBtn) {
+                saveNameBtn.addEventListener("click", () => {
+                    const newName = document.getElementById("name-input").value.trim();
+                    const user = firebase.auth().currentUser;
+
+                    if (user && newName) {
+                        user.updateProfile({ displayName: newName }).then(() => {
+                            document.getElementById("user-name").textContent = newName;
+                            nameEditContainer.style.display = "none";
+                            alert("Name updated successfully!");
+                        }).catch(error => {
+                            alert("Error updating name: " + error.message);
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

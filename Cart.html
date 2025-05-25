@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart.html</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div><a href="HTMLPage1.html" class="logo">UniBook</a></div>
+        <nav>
+            <a href="MyProfile.html">MY PROFILE</a>
+            <a href="#" id="logout-btn" style="display:none;">LOG OUT</a>
+            <a href="#" id="login-btn">LOGIN</a>
+            <a href="Cart.html">MY CART</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Your Cart Items</h1>
+
+        <!-- Cart content - will be shown when logged in -->
+        <div id="cart-content" style="display:none;">
+            <div id="cart-container"></div>
+            <ul id="cart-items"></ul>
+            <h3>Total: $<span id="total-price">0.00</span></h3>
+            <button id="checkout-btn" style="
+    background: linear-gradient(135deg, #e53935, #c62828);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    text-transform: uppercase;
+    letter-spacing: 1px;">
+                Complete Payment
+            </button>
+        </div>
+
+        <!-- Not logged in message - will be shown when not logged in -->
+        <div id="not-logged-in-message" style="margin-top: 20px; color: black; display: none; text-align: center; padding: 30px;">
+            <p style="font-size: 18px; margin-bottom: 20px;">Please login to view your cart items.</p>
+            <button id="login-redirect-btn" style="background-color:darkslategrey; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 4px;">
+                Login Now
+            </button>
+        </div>
+
+    </main>
+    <div id="login-modal" class="modal" style="display:none;position:fixed;top:10%;left:83%;background:#fff;padding:20px;border-radius:10px;background-color:ghostwhite;border: 1px solid; border-color: lightgrey ;">
+        <span id="close-login" style="float:right;cursor:pointer;">&times;</span>
+        <h2>Register / Login</h2>
+        <input type="email" id="email" placeholder="Email"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button id="register-btn">Register</button>
+        <button id="login-btn-modal">Login</button>
+    </div>
+
+    <script>
+        // Sayfa tamamen yüklendikten sonra çalışacak
+        window.addEventListener('load', function () {
+            // Kullanıcı giriş durumunu kontrol et
+            firebase.auth().onAuthStateChanged(function (user) {
+                const cartContent = document.getElementById('cart-content');
+                const notLoggedInMessage = document.getElementById('not-logged-in-message');
+
+                if (user) {
+                    // Kullanıcı giriş yapmış
+                    if (cartContent) cartContent.style.display = 'block';
+                    if (notLoggedInMessage) notLoggedInMessage.style.display = 'none';
+
+                    // Sepeti yükle
+                    loadCart();
+                } else {
+                    // Kullanıcı giriş yapmamış
+                    if (cartContent) cartContent.style.display = 'none';
+                    if (notLoggedInMessage) notLoggedInMessage.style.display = 'block';
+                }
+            });
+
+            // Login Now butonuna tıklama olayı
+            const loginRedirectBtn = document.getElementById('login-redirect-btn');
+            if (loginRedirectBtn) {
+                loginRedirectBtn.addEventListener('click', function () {
+                    // Login modalını göster
+                    const loginModal = document.getElementById('login-modal');
+                    if (loginModal) {
+                        loginModal.style.display = 'block';
+                    }
+                });
+            }
+
+            // Biraz bekleyip elementlerin yüklenmesini sağlayalım
+            setTimeout(function () {
+                const checkoutBtn = document.getElementById('checkout-btn');
+                if (checkoutBtn) {
+                    // Mevcut onclick işlevini değiştir
+                    checkoutBtn.onclick = function (e) {
+                        e.preventDefault(); // Varsayılan davranışı engelle
+
+                        // Firebase auth kontrolü
+                        if (typeof firebase !== 'undefined' && firebase.auth) {
+                            const user = firebase.auth().currentUser;
+                            if (!user) {
+                                alert("Please login first!");
+                                return;
+                            }
+                            console.log("Redirecting to checkout..."); // Debug için
+                            window.location.href = "checkout.html";
+                        } else {
+                            console.log("Firebase not loaded yet, redirecting anyway...");
+                            window.location.href = "checkout.html";
+                        }
+                    };
+                    console.log("Checkout button event listener added successfully");
+                } else {
+                    console.log("Checkout button not found");
+                }
+            }, 1000); // 1 saniye bekle
+        });
+
+        // Sepeti yükleme fonksiyonu - script.js'deki loadCart fonksiyonunu çağırır
+        function loadCart() {
+            if (typeof window.loadCart === 'function') {
+                window.loadCart();
+            } else {
+                console.log("loadCart function not found in global scope");
+            }
+        }
+    </script>
+</body>
+</html>
