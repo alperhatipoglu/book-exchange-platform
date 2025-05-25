@@ -23,7 +23,6 @@
     <main>
         <h1>Your Cart Items</h1>
 
-        <!-- Cart content - will be shown when logged in -->
         <div id="cart-content" style="display:none;">
             <div id="cart-container"></div>
             <ul id="cart-items"></ul>
@@ -51,7 +50,6 @@
             </button>
         </div>
 
-        <!-- Not logged in message - will be shown when not logged in -->
         <div id="not-logged-in-message" style="margin-top: 20px; color: black; display: none; text-align: center; padding: 30px;">
             <p style="font-size: 18px; margin-bottom: 20px;">Please login to view your cart items.</p>
             <button id="login-redirect-btn" style="background-color:darkslategrey; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 4px;">
@@ -70,32 +68,25 @@
     </div>
 
     <script>
-        // Sayfa tamamen yüklendikten sonra çalışacak
         window.addEventListener('load', function () {
-            // Kullanıcı giriş durumunu kontrol et
             firebase.auth().onAuthStateChanged(function (user) {
                 const cartContent = document.getElementById('cart-content');
                 const notLoggedInMessage = document.getElementById('not-logged-in-message');
 
                 if (user) {
-                    // Kullanıcı giriş yapmış
                     if (cartContent) cartContent.style.display = 'block';
                     if (notLoggedInMessage) notLoggedInMessage.style.display = 'none';
 
-                    // Sepeti yükle
                     loadCart();
                 } else {
-                    // Kullanıcı giriş yapmamış
                     if (cartContent) cartContent.style.display = 'none';
                     if (notLoggedInMessage) notLoggedInMessage.style.display = 'block';
                 }
             });
 
-            // Login Now butonuna tıklama olayı
             const loginRedirectBtn = document.getElementById('login-redirect-btn');
             if (loginRedirectBtn) {
                 loginRedirectBtn.addEventListener('click', function () {
-                    // Login modalını göster
                     const loginModal = document.getElementById('login-modal');
                     if (loginModal) {
                         loginModal.style.display = 'block';
@@ -103,22 +94,19 @@
                 });
             }
 
-            // Biraz bekleyip elementlerin yüklenmesini sağlayalım
             setTimeout(function () {
                 const checkoutBtn = document.getElementById('checkout-btn');
                 if (checkoutBtn) {
-                    // Mevcut onclick işlevini değiştir
                     checkoutBtn.onclick = function (e) {
-                        e.preventDefault(); // Varsayılan davranışı engelle
+                        e.preventDefault(); 
 
-                        // Firebase auth kontrolü
                         if (typeof firebase !== 'undefined' && firebase.auth) {
                             const user = firebase.auth().currentUser;
                             if (!user) {
                                 alert("Please login first!");
                                 return;
                             }
-                            console.log("Redirecting to checkout..."); // Debug için
+                            console.log("Redirecting to checkout..."); 
                             window.location.href = "checkout.html";
                         } else {
                             console.log("Firebase not loaded yet, redirecting anyway...");
@@ -129,10 +117,9 @@
                 } else {
                     console.log("Checkout button not found");
                 }
-            }, 1000); // 1 saniye bekle
+            }, 1000); 
         });
 
-        // Sepeti yükleme fonksiyonu - script.js'deki loadCart fonksiyonunu çağırır
         function loadCart() {
             if (typeof window.loadCart === 'function') {
                 window.loadCart();
