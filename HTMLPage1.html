@@ -125,11 +125,11 @@
                 const viewportWidth = window.innerWidth;
 
                 if (viewportWidth > 1200) {
-                    return 1000; // Scroll 4 books on large screens
+                    return 1000; 
                 } else if (viewportWidth > 768) {
-                    return 800; // Scroll 3 books on medium screens
+                    return 800; 
                 } else {
-                    return 600; // Scroll 2 books on small screens
+                    return 600; 
                 }
             }
 
@@ -204,7 +204,7 @@
             });
         }
     </script>
-    <!-- Soldan açılan kategori menüsü -->
+    
     <div id="category-menu" style="
     position: fixed;
     top: 0;
@@ -233,7 +233,7 @@
             &times;
         </button>
 
-        <!-- ARAMA KUTUSU -->
+      
         <input type="text" id="category-search" placeholder="Search category..." style="
     width: 85%;
     margin: 0 10px 15px 10px;
@@ -247,7 +247,7 @@
 
 ">
 
-        <a href="category.html">all books</a>  <!-- Buraya eklendi -->
+        <a href="category.html">all books</a>  
         <a href="category.html?category=science">science </a>
         <a href="category.html?category=allegorical novella">allegorical novella</a>
         <a href="category.html?category=high fantasy novel">high fantasy novel</a>
@@ -291,7 +291,7 @@
     </script>
 
     <script>
-        // Kitapları Firebase'den çek ve sadece featured olanları göster
+       
         firebase.database().ref('books').once('value', snapshot => {
             const books = snapshot.val();
             const bookList = document.getElementById('book-list');
@@ -299,7 +299,7 @@
             for (let key in books) {
                 const book = books[key];
 
-                // SADECE featured olanları göster
+               
                 if (book.featured) {
                     const card = document.createElement('div');
                     card.className = 'book-card';
