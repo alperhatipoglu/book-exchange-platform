@@ -4,14 +4,12 @@
     <meta charset="UTF-8" />
     <title>Category View</title>
     <link rel="stylesheet" href="style.css" />
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="firebase-config.js"></script>
 
     <style>
-        /* Kitap kartları */
         .book-list {
             display: flex;
             flex-wrap: wrap;
@@ -89,13 +87,10 @@
 
 
 
-    <!-- Soldan açılan kategori menüsü -->
     <div id="category-menu" style="position: fixed; top: 0; left: -250px; width: 250px; background: #f4f4f4; box-shadow: 2px 0 5px rgba(0,0,0,0.2); transition: left 0.3s ease; padding-top: 60px; z-index: 1000; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; height: 92%; ">
         <button id="close-category-menu" style="position: absolute; top: 10px; right: 15px; font-size: 28px; background: none; border: none; cursor: pointer;" aria-label="Close categories menu">
             &times;
         </button>
-        <!-- ARAMA KUTUSU -->
-        <!-- ARAMA KUTUSU -->
         <input type="text" id="category-search" placeholder="Search category..." style="
     width: 85%;
     margin: 0 10px 15px 10px;
@@ -107,7 +102,7 @@
     box-sizing: border-box;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 ">
-        <a href="category.html">all books</a>  <!-- Buraya eklendi -->
+        <a href="category.html">all books</a>  
         <a href="category.html?category=science">science</a>
         <a href="category.html?category=allegorical novella">allegorical novella</a>
         <a href="category.html?category=high fantasy novel">high fantasy novel</a>
@@ -130,9 +125,7 @@
     </div>
 
     <script>
-        // Sayfa yüklendiğinde
         document.addEventListener("DOMContentLoaded", () => {
-            // URL'den kategori al
             const params = new URLSearchParams(window.location.search);
             const category = params.get("category");
             if (!category) {
@@ -147,7 +140,6 @@
 
             let allBooks = [];
 
-            // Kitapları kategoriye göre çek ve göster
             dbRef.once("value").then((snapshot) => {
                 allBooks = [];
                 snapshot.forEach((child) => {
@@ -190,7 +182,6 @@
                 displayBooks(filteredBooks);
             });
 
-            // Kategori menüsü aç-kapa
             const categoryBtn = document.getElementById('category-btn');
             const categoryMenu = document.getElementById('category-menu');
             const closeCategoryMenu = document.getElementById('close-category-menu');
