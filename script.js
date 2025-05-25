@@ -3,7 +3,6 @@
     const auth = firebase.auth();
     const db = firebase.database();
 
-    // Elementleri seç
     const welcomeTitle = document.getElementById("welcome-title");
     const profileInfo = document.getElementById("profile-info");
     const notLoggedInMessage = document.getElementById("not-logged-in-message");
@@ -20,7 +19,6 @@
     const registerBtn = document.getElementById("register-btn");
     const loginBtnModal = document.getElementById("login-btn-modal");
 
-    // Modal aç/kapa - sadece 1 kere yaz
     if (openLogin && loginModal && closeLogin) {
         openLogin.onclick = () => loginModal.style.display = "block";
         closeLogin.onclick = () => loginModal.style.display = "none";
@@ -60,10 +58,8 @@
         };
     }
 
-    // Kullanıcı değişimini dinle
     auth.onAuthStateChanged(user => {
         if (user) {
-            // Giriş yapmış kullanıcı için UI güncelle
             logoutBtn.style.display = "inline";
             loginBtn.style.display = "none";
             welcomeTitle.style.display = "block";
@@ -78,7 +74,6 @@
             document.getElementById("user-registration-date").textContent =
                 new Date(user.metadata.creationTime).toLocaleDateString();
 
-            // Sepet sayısı çek
             const cartRef = db.ref("carts/" + user.uid);
             cartRef.once("value").then(snapshot => {
                 let count = 0;
@@ -144,7 +139,7 @@ function loadBooks() {
 
         snapshot.forEach(child => {
             const book = child.val();
-            if (book.featured) {  // sadece featured olanları göster
+            if (book.featured) {  
                 const div = document.createElement("div");
                 div.classList.add("book-card");
                 div.innerHTML = `
@@ -298,7 +293,6 @@ function loadBookDetail() {
 
         document.getElementById("book-detail").innerHTML = bookDetailHTML;
 
-        // Yorum fonksiyonlarını başlat
         initComments(bookId);
 
         initRating(bookId);
@@ -392,7 +386,6 @@ function renderCart(cart) {
     const totalPriceElem = document.getElementById('total-price');
     if (totalPriceElem) totalPriceElem.textContent = total.toFixed(2);
 
-    // Silme butonlarına tıklama olayını ata
     const removeButtons = document.querySelectorAll('.remove-btn');
     removeButtons.forEach(btn => {
         btn.onclick = () => {
@@ -419,7 +412,6 @@ function removeFromCart(itemKey) {
         }
 
         if (item.quantity > 1) {
-            // Quantity 1 azalt
             cartItemRef.update({ quantity: item.quantity - 1 })
                 .then(() => {
                     alert("Product quantity decreased by 1.");
@@ -427,7 +419,6 @@ function removeFromCart(itemKey) {
                 })
                 .catch(err => alert("Update error: " + err.message));
         } else {
-            // Quantity 1 ise ürün tamamen sil
             cartItemRef.remove()
                 .then(() => {
                     alert("The book was removed from the cart.");
@@ -506,16 +497,13 @@ function exchangeRequest() {
         return;
     }
 
-    // Path: exchangeRequests/{userId}/{bookId}
     const requestRef = firebase.database().ref(`exchangeRequests/${user.uid}/${bookId}`);
 
-    // Önce kontrol et
     requestRef.once("value").then(snapshot => {
         if (snapshot.exists()) {
             alert("You have already sent an exchange request for this book.");
             return;
         } else {
-            // Kitap bilgisi al
             firebase.database().ref("books/" + bookId).once("value").then(bookSnap => {
                 const book = bookSnap.val();
                 if (!book) {
@@ -531,7 +519,6 @@ function exchangeRequest() {
                     timestamp: new Date().toISOString()
                 };
 
-                // Yaz
                 requestRef.set(request)
                     .then(() => {
                         alert("Your exchange request has been sent to the administrator.");
@@ -552,7 +539,6 @@ function initComments(bookId) {
 
     const commentsRef = firebase.database().ref('comments/' + bookId);
 
-    // Kullanıcı giriş durumunu izle
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             submitCommentBtn.disabled = false;
@@ -688,7 +674,6 @@ function initRating(bookId) {
                         currentData.total = currentData.total - currentData.users[userId] + val;
                         currentData.users[userId] = val;
                     } else {
-                        // Yeni oy
                         currentData.count++;
                         currentData.total += val;
                         if (!currentData.users) currentData.users = {};
