@@ -11,3 +11,5 @@ To run this project:
 3. Manually create a new file named firebase-config.js in your local project directory.
 
 4. Copy the configuration values exactly as shown in the project report (APPENDICES - B) into this file.
+
+5. Finally, open the HTMLPage1.html file as mentioned in the README.
